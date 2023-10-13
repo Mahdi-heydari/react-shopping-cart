@@ -1,9 +1,10 @@
 header {
-    grid-area: header;
-    display: flex;
-    align-items: center;
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  padding: .5rem;
 }
 
 header a {
-  color: #fff;
+  color: #EDEDED;
 }
