@@ -7,14 +7,51 @@ body,
 #root {
   height: 100dvh;
   margin: 0;
+  font-size: 1.6rem;
+  background: #171717;
+  color: #ededed;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 header,
 footer {
-  background: #203040;
-  color: #fff;
+  background: #008170;
+  duration: 2s;
 }
 
-a:hover{
-  color: #ff8000;
+a {
+  text-decoration: none;
+  transition: 0.5s;
+  color: #ededed;
+}
+
+a:hover {
+  color: #ffff;
+  letter-spacing: 0.2px;
+}
+
+ul {
+  list-style: none;
+}
+
+.button {
+  padding: 1rem;
+  background: none;
+  border: none;
+  color: #ededed;
+  cursor: pointer;
+  transition: .3s;
+  font-size: 1.6rem;
+}
+
+
+.button.primary {
+  background-color: #da0037;
+}
+
+.button.primary:hover,.button.primary:active{
+  letter-spacing: 1px;
+  background-color: #ededed;
+  color: #da0037;
+  font-weight: bold;
 }
