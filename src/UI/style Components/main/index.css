@@ -1,5 +1,6 @@
 main {
   grid-area: main;
+  margin-bottom: 2rem;
 }
 
 .content {
