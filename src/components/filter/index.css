@@ -10,3 +10,20 @@
     flex: 1;
 }
 
+select{
+    background: none;
+    border: 1px #ededed solid;
+    padding: .3rem;
+    border-radius: .4rem;
+    color: #ededed;
+    margin-left: .5rem;
+    transition: .4s;
+}
+
+select:focus{
+    margin-left: 1rem;
+}
+
+select option{
+    background-color: #da0037;
+}
