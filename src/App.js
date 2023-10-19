@@ -13,7 +13,7 @@ export default function App() {
 
   return (
     <>
-      <AppLayout productState={productState} sizeState={sizeState} sortState={sortState}  />
+      <AppLayout productState={productState}  sizeState={sizeState} sortState={sortState}  />
     </>
   )
 }

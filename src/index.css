@@ -55,3 +55,7 @@ ul {
   color: #da0037;
   font-weight: bold;
 }
+
+span{
+  display: flex;
+}
