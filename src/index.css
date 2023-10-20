@@ -35,7 +35,6 @@ ul {
 }
 
 .button {
-  padding: 1rem;
   background: none;
   border: none;
   color: #ededed;
@@ -45,15 +44,33 @@ ul {
 }
 
 
-.button.primary {
+.button.primary,.button.primary-sm {
+  padding: 1rem;
   background-color: #da0037;
 }
 
-.button.primary:hover,.button.primary:active{
+.button.primary-sm{
+  margin-left: .2rem;
+  padding: .4rem .3rem;
+}
+
+.button.secondery{
+  border: 1px #ededed solid;
+  padding:1rem ;
+  font-weight: bold;
+}
+
+.button.primary:hover,.button.primary:active,.button.primary-sm:active{
   letter-spacing: 1px;
   background-color: #ededed;
   color: #da0037;
   font-weight: bold;
+}
+
+.button.secondery:hover, .button.secondery:active{
+  background-color: #ededed;
+  color: #171717;
+  letter-spacing: .7px;
 }
 
 span{

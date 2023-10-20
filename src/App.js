@@ -6,14 +6,16 @@ export default function App() {
   const [products, setProducts] = useState(data.products);
   const [size, setSize] = useState("");
   const [sort, setSort] = useState("");
+  const [cartItems, setCartItems] = useState([]);
 
   const productState = {products,setProducts}
   const sizeState = {size, setSize}
   const sortState = {sort, setSort}
+  const cartItemsState = {cartItems, setCartItems}
 
   return (
     <>
-      <AppLayout productState={productState}  sizeState={sizeState} sortState={sortState}  />
+      <AppLayout productState={productState} cartItemsState={cartItemsState}  sizeState={sizeState} sortState={sortState}  />
     </>
   )
 }
