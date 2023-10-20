@@ -10,9 +10,18 @@ export default function Filter({ productState, sizeState, sortState }) {
    // func for sorting products
    function sortProducts(value) {
     let updateProduct=products.slice();
-        updateProduct = updateProduct.sort((a,b)=> (
-           value === "lowest" ? ((a.price < b.price)? 1 :-1 ) : value === "highest" ? ((a.price > b.price)? 1 :11 ) : ((a._id > b._id)? 1 :-1 )
-           ))
+        updateProduct = updateProduct.sort((a,b)=> {
+          console.log("a,b", a,b);
+          console.log("value", value)
+          //  value === "lowest" ? ((a.price < b.price)? 1 :-1 ) : value === "highest" ? ((a.price > b.price)? 1 : -1 ) : ((a._id > b._id)? 1 :-1 )
+          if(value === "Lowest") {
+            return (a.price < b.price)? 1 :-1 
+          }
+          if(value === "Highest") {
+            return (a.price > b.price)? 1 : -1 
+          }
+          return (a._id > b._id)? 1 :-1
+        })
         setSort(value)
         setProducts(updateProduct);
     }
