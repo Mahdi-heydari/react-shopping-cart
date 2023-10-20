@@ -3,11 +3,11 @@ import Header from "../../UI/Header";
 import Main from "../../UI/Main";
 import "./index.css" ;
 
-export default function AppLayout({productState,sizeState,sortState}) {
+export default function AppLayout({productState,sizeState,sortState,cartItemsState}) {
   return (
     <div className="grid-container">
       <Header/>
-      <Main productState={productState} sizeState={sizeState} sortState={sortState}/>
+      <Main productState={productState} sizeState={sizeState} sortState={sortState} cartItemsState={cartItemsState}/>
       <Footer/>
     </div>
   )

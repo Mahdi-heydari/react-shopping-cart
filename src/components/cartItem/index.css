@@ -1,0 +1,21 @@
+.cart-items li{
+    display: flex;
+}
+
+.cart-items li div{
+    padding: .5rem;
+}
+
+.cart-items li div:last-child{
+    flex: 1;
+}
+
+.cart-items img{
+    width: 4rem;
+}
+
+
+
+.cart-items .right{
+    text-align: right;
+}

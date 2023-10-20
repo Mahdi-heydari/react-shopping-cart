@@ -1,0 +1,15 @@
+.cart-header{
+    border-bottom: .1rem #ededed solid;
+    justify-content: center;
+}
+
+.cart{
+    padding: 1.1rem;
+    margin: 1.1rem;
+    display: flex;
+}
+
+.cart-items{
+    padding: 0;
+    width: 100%;
+}
