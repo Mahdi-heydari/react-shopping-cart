@@ -11,3 +11,13 @@
 .info>div, .info>button{
     flex: 1;
 }
+
+.show-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.show-form>button{
+    margin: 1rem 0 5rem 0;
+}
