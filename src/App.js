@@ -6,7 +6,7 @@ export default function App() {
   const [products, setProducts] = useState(data.products);
   const [size, setSize] = useState("");
   const [sort, setSort] = useState("");
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) ?JSON.parse(localStorage.getItem("cartItems")) : []);
 
   const productState = {products,setProducts}
   const sizeState = {size, setSize}

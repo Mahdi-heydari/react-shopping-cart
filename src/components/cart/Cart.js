@@ -16,15 +16,22 @@ export default function Cart({ cartItems, removeFromCart }) {
       <div className="cart">
         <ul className="cart-items">
           {cartItems.map((cartItem) => (
-            <CartItem key={cartItem._id} cartItem={cartItem} removeFromCart={removeFromCart} />
+            <CartItem
+              key={cartItem._id}
+              cartItem={cartItem}
+              removeFromCart={removeFromCart}
+            />
           ))}
         </ul>
       </div>
-      
-      {Boolean(cartItems.length) && <div className="cart">
-        <PurchaseInfo cartItems={cartItems}/>
-      </div>}
 
+      {Boolean(cartItems.length) && (
+        <div>
+          <div className="cart">
+            <PurchaseInfo cartItems={cartItems} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

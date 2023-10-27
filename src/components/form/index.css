@@ -1,0 +1,23 @@
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.form-container li{
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.form-container input{
+    margin-left: .7rem;
+    background:none;
+    padding: .8rem 3rem;
+    border: 1px solid #ededed;
+    border-radius: 3px;
+    color: #ededed;
+}
+
+.form-container input::placeholder{
+    color: #edededb4;
+}
