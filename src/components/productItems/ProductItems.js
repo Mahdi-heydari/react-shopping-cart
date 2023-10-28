@@ -1,8 +1,9 @@
+import { useAppContext } from "../../store";
 import formatCurrency from "../../utils/formatCurrency"
 import "./index.css"
 
-export default function ProductItems({product,addToCart}) {
-  
+export default function ProductItems({product}) {
+  const {dispatch,state} = useAppContext();
 
   return (
     <li>
@@ -14,7 +15,7 @@ export default function ProductItems({product,addToCart}) {
 
         <div className="productPrice">
           <span>{formatCurrency(product.price)}</span>
-          <button className="button primary" onClick={()=> addToCart(product)}>Add to Cart</button>
+          <button className="button primary" onClick={()=> dispatch({type:"ADD_TO_CART", payload: product })}>Add to Cart</button>
         </div>
       </div>
     </li>

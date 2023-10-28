@@ -1,8 +1,12 @@
+import { useAppContext } from "../../store";
 import CartItem from "../cartItem/CartItem";
 import PurchaseInfo from "../purchaseInfo/PurchaseInfo";
 import "./index.css";
 
-export default function Cart({ cartItems, removeFromCart }) {
+export default function Cart() {
+  const {dispatch,state} = useAppContext();
+  const {cartItems} = state;
+
   return (
     <div>
       {cartItems.length === 0 ? (
@@ -19,7 +23,6 @@ export default function Cart({ cartItems, removeFromCart }) {
             <CartItem
               key={cartItem._id}
               cartItem={cartItem}
-              removeFromCart={removeFromCart}
             />
           ))}
         </ul>

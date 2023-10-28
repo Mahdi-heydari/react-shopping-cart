@@ -1,7 +1,9 @@
+import { useAppContext } from "../../store";
 import formatCurrency from "../../utils/formatCurrency";
 import "./index.css";
 
-export default function CartItem({ cartItem,removeFromCart }) {
+export default function CartItem({ cartItem}) {
+  const {dispatch, state} = useAppContext();
 
   return (
     <li>
@@ -13,7 +15,7 @@ export default function CartItem({ cartItem,removeFromCart }) {
         <div>{cartItem.title}</div>
         <div className="right">
             {formatCurrency(cartItem.price)} x{cartItem.count} {" "}
-          <button className="button primary-sm" onClick={() => removeFromCart(cartItem)}>Remove</button>
+          <button className="button primary-sm" onClick={() => dispatch({type:"REMOVE_FROM_CART", payload: cartItem })}>Remove</button>
         </div>
       </div>
     </li>
