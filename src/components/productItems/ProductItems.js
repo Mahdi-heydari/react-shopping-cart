@@ -15,7 +15,7 @@ export default function ProductItems({product}) {
 
         <div className="productPrice">
           <span>{formatCurrency(product.price)}</span>
-          <button className="button primary" onClick={()=> dispatch({type:"ADD_TO_CART", payload: product })}>Add to Cart</button>
+          <button className="button primary" type='button' onClick={()=> {dispatch({type:"ADD_TO_CART", payload: product })}}>Add to Cart</button>
         </div>
       </div>
     </li>

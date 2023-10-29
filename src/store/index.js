@@ -18,6 +18,7 @@ function WithAppContext({ children }) {
 
   const appDispatch = useCallback(
     (action) => {
+      console.log("action", action)
       if (typeof action === "function") {
         return action(dispatch);
       }

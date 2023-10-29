@@ -4,7 +4,7 @@ import PurchaseInfo from "../purchaseInfo/PurchaseInfo";
 import "./index.css";
 
 export default function Cart() {
-  const {dispatch,state} = useAppContext();
+  const {state} = useAppContext();
   const {cartItems} = state;
 
   return (

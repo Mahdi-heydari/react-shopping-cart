@@ -5,6 +5,7 @@ const appReducer = (prevState, action) => {
     }
 
     case "ADD_TO_CART": {
+      console.log("add")
       // let newCartItems = [];
       // const { cartItems } = prevState;
       // const cartProducts = cartItems.slice();
@@ -40,37 +41,36 @@ const appReducer = (prevState, action) => {
       const cartItem = action.payload;
       const cartItemIndex = cartItems.findIndex(item=> item._id === cartItem._id);
 
-      console.log("cartItems", cartItems)
       if(cartItemIndex === -1){
-        console.log("true")
         cartItems.push({...cartItem, count:1})
       }else{
-        console.log("false")
-        console.log("count",cartItems[cartItemIndex].count)
         let cartItemsClone = [...cartItems]
-        cartItemsClone[cartItemIndex].count+=1;
-        console.log("count-2",cartItems[cartItemIndex].count)
-        cartItems = cartItemsClone
+        cartItemsClone[cartItemIndex] = {...cartItems[cartItemIndex], count:cartItems[cartItemIndex].count + 1  };
+        cartItems = cartItemsClone;
       };
-      console.log("cartItems-2", cartItems)
-      const test = {...prevState, cartItems};
-      console.log("test", test)
-      return test
+      const temp = {...prevState, cartItems};
+      return temp
 
     }
 
     case "REMOVE_FROM_CART": {
       const { cartItems } = prevState;
-      const cartProducts = cartItems.slice();
-      const updateState = cartProducts.filter((cartProduct) => {
-        if (cartProduct._id === action.payload._id) {
-          cartProduct.count--;
-        }
-        return cartProduct.count > 0;
-      });
-      localStorage.setItem("cartItems", JSON.stringify(updateState));
 
-      return { ...prevState, cartItems: updateState };
+      const updatedCart = cartItems.reduce((acc, curr)=>{
+        const temp = {...curr}
+        if(temp._id === action.payload._id ) {
+          temp.count = temp.count -1
+          if(temp.count > 0) {
+            acc.push(temp)
+            return acc
+          }
+          return acc
+        }
+        acc.push(temp)
+        return acc
+      }, [] )
+
+      return { ...prevState, cartItems: updatedCart };
     }
 
     case "SORT_PRODUCTS": {
