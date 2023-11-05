@@ -5,38 +5,6 @@ const appReducer = (prevState, action) => {
     }
 
     case "ADD_TO_CART": {
-      console.log("add")
-      // let newCartItems = [];
-      // const { cartItems } = prevState;
-      // const cartProducts = cartItems.slice();
-      // console.log("cartProducts", cartProducts);
-      // console.log("action", action.payload);
-      // let alreadyInCart = false;
-      // newCartItems = cartProducts.map((item) => {
-      //   if (item._id === action.payload._id) {
-      //     alreadyInCart = true;
-      //     const newCartItems = cartProducts.map((item) => {
-      //       const temp = { ...item };
-      //       if (temp._id === action.payload._id) {
-      //         temp.count++;
-      //       }
-      //       console.log("temp", temp)
-      //       return temp;
-      //     });
-      //     localStorage.setItem("cartItems", JSON.stringify(newCartItems));
-      //     console.log("newCartItems", newCartItems)
-      //     console.log("prevState", prevState)
-      //     return {  cartItems: [...newCartItems] };
-      //   }
-      // });
-
-      // console.log("alreadyInCart", alreadyInCart)
-      // console.log("cartProducts-2", cartProducts)
-      // if (!alreadyInCart) {
-      //   newCartItems = [...cartItems, { ...action.payload, count: 1 }];
-      //   localStorage.setItem("cartItems", JSON.stringify(newCartItems));
-      // }
-      // return { ...prevState, cartItems: newCartItems };
       let cartItems = [...prevState.cartItems];
       const cartItem = action.payload;
       const cartItemIndex = cartItems.findIndex(item=> item._id === cartItem._id);
