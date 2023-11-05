@@ -6,7 +6,6 @@ import "./index.css";
 export default function Cart() {
   const {state} = useAppContext();
   const {cartItems} = state;
-  console.log("error", cartItems)
 
   return (
     <div>

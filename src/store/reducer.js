@@ -62,14 +62,15 @@ const appReducer = (prevState, action) => {
 
     case "FILTER_PRODUCTS": {
       const { products } = prevState;
+      console.log("asagsg", products)
       if (action.payload === "") {
         return {
           ...prevState,
           size: action.payload,
-          products: prevState.products,
+          products: products,
         };
       } else {
-        const updateProduct = products.products.filter(
+        const updateProduct = products.filter(
           (productItem) =>
             productItem.availableSizes.indexOf(action.payload) >= 0
         );
