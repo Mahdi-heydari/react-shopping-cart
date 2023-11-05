@@ -17,28 +17,31 @@ const appReducer = (prevState, action) => {
         cartItems = cartItemsClone;
       };
       const temp = {...prevState, cartItems};
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      return temp
+      
+    }
+    
+    case "REMOVE_FROM_CART": {
+      let cartItems = [...prevState.cartItems];
+      let cartItemsClone = [...cartItems]
+      const cartItem = action.payload;
+      const cartItemIndex = cartItems.findIndex(item=> item._id === cartItem._id);
+      
+      if(cartItemsClone[cartItemIndex].count > 0) {
+        cartItemsClone[cartItemIndex] = {...cartItems[cartItemIndex], count:cartItems[cartItemIndex].count - 1  };
+        cartItems = cartItemsClone;
+      }
+      if(cartItemsClone[cartItemIndex].count === 0){
+        cartItemsClone.splice(cartItemsClone[cartItemIndex], 1)
+        cartItems = cartItemsClone;
+      }
+      
+      
+      const temp = {...prevState, cartItems};
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
       return temp
 
-    }
-
-    case "REMOVE_FROM_CART": {
-      const { cartItems } = prevState;
-
-      const updatedCart = cartItems.reduce((acc, curr)=>{
-        const temp = {...curr}
-        if(temp._id === action.payload._id ) {
-          temp.count = temp.count -1
-          if(temp.count > 0) {
-            acc.push(temp)
-            return acc
-          }
-          return acc
-        }
-        acc.push(temp)
-        return acc
-      }, [] )
-
-      return { ...prevState, cartItems: updatedCart };
     }
 
     case "SORT_PRODUCTS": {
