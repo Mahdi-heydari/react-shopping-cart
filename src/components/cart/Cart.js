@@ -6,6 +6,7 @@ import "./index.css";
 export default function Cart() {
   const {state} = useAppContext();
   const {cartItems} = state;
+  console.log("error", cartItems)
 
   return (
     <div>
@@ -16,7 +17,7 @@ export default function Cart() {
           you have {cartItems.length} in cart 😇
         </div>
       )}
-
+      
       <div className="cart">
         <ul className="cart-items">
           {cartItems.map((cartItem) => (

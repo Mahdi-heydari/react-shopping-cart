@@ -5,38 +5,6 @@ const appReducer = (prevState, action) => {
     }
 
     case "ADD_TO_CART": {
-      console.log("add")
-      // let newCartItems = [];
-      // const { cartItems } = prevState;
-      // const cartProducts = cartItems.slice();
-      // console.log("cartProducts", cartProducts);
-      // console.log("action", action.payload);
-      // let alreadyInCart = false;
-      // newCartItems = cartProducts.map((item) => {
-      //   if (item._id === action.payload._id) {
-      //     alreadyInCart = true;
-      //     const newCartItems = cartProducts.map((item) => {
-      //       const temp = { ...item };
-      //       if (temp._id === action.payload._id) {
-      //         temp.count++;
-      //       }
-      //       console.log("temp", temp)
-      //       return temp;
-      //     });
-      //     localStorage.setItem("cartItems", JSON.stringify(newCartItems));
-      //     console.log("newCartItems", newCartItems)
-      //     console.log("prevState", prevState)
-      //     return {  cartItems: [...newCartItems] };
-      //   }
-      // });
-
-      // console.log("alreadyInCart", alreadyInCart)
-      // console.log("cartProducts-2", cartProducts)
-      // if (!alreadyInCart) {
-      //   newCartItems = [...cartItems, { ...action.payload, count: 1 }];
-      //   localStorage.setItem("cartItems", JSON.stringify(newCartItems));
-      // }
-      // return { ...prevState, cartItems: newCartItems };
       let cartItems = [...prevState.cartItems];
       const cartItem = action.payload;
       const cartItemIndex = cartItems.findIndex(item=> item._id === cartItem._id);
@@ -49,28 +17,31 @@ const appReducer = (prevState, action) => {
         cartItems = cartItemsClone;
       };
       const temp = {...prevState, cartItems};
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      return temp
+      
+    }
+    
+    case "REMOVE_FROM_CART": {
+      let cartItems = [...prevState.cartItems];
+      let cartItemsClone = [...cartItems]
+      const cartItem = action.payload;
+      const cartItemIndex = cartItems.findIndex(item=> item._id === cartItem._id);
+      
+      if(cartItemsClone[cartItemIndex].count > 0) {
+        cartItemsClone[cartItemIndex] = {...cartItems[cartItemIndex], count:cartItems[cartItemIndex].count - 1  };
+        cartItems = cartItemsClone;
+      }
+      if(cartItemsClone[cartItemIndex].count === 0){
+        cartItemsClone.splice(cartItemsClone[cartItemIndex], 1)
+        cartItems = cartItemsClone;
+      }
+      
+      
+      const temp = {...prevState, cartItems};
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
       return temp
 
-    }
-
-    case "REMOVE_FROM_CART": {
-      const { cartItems } = prevState;
-
-      const updatedCart = cartItems.reduce((acc, curr)=>{
-        const temp = {...curr}
-        if(temp._id === action.payload._id ) {
-          temp.count = temp.count -1
-          if(temp.count > 0) {
-            acc.push(temp)
-            return acc
-          }
-          return acc
-        }
-        acc.push(temp)
-        return acc
-      }, [] )
-
-      return { ...prevState, cartItems: updatedCart };
     }
 
     case "SORT_PRODUCTS": {
